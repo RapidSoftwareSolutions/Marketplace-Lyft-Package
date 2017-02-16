@@ -8,7 +8,7 @@ Shipping
 0. Go to [Lyft website](https://www.lyft.com) 
 1. Log in or create a new account
 2. Register an application
-3. Go to [Application page](ttps://www.lyft.com/developers/manage) to get your client Id and client Secret
+3. Go to [Application page](https://www.lyft.com/developers/manage) to get your client Id and client Secret
 
 
 ## Lyft.getAccessToken
