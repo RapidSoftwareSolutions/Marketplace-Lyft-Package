@@ -1,0 +1,393 @@
+{
+  "package": "Lyft",
+  "tagline": "Shippo API",
+  "description": "Shipping",
+  "image": "http:\/\/logo.clearbit.com\/lyft.com",
+  "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-Lyft-Package",
+  "keywords": [
+  ],
+  "accounts": {
+    "domain": "lyft.com",
+    "credentials": [
+      "clientId",
+      "clientSecret"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "getAccessToken",
+      "description": "Creates a new address object",
+      "args": [
+        {
+          "name": "clientId",
+          "type": "credentials",
+          "info": "The client id obtained from Lyft.",
+          "required": true
+        }, {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "The client secret obtained from Lyft.",
+          "required": true
+        }, {
+        "name": "redirectUri",
+        "type": "String",
+        "info": "Your redirect URI",
+        "required": true
+        }, {
+          "name": "code",
+          "type": "String",
+          "info": "Code from the user.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    }, {
+      "name": "refreshAccessToken",
+      "description": "Creates a new address object",
+      "args": [
+        {
+          "name": "clientId",
+          "type": "credentials",
+          "info": "The client id obtained from Lyft.",
+          "required": true
+        }, {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "The client secret obtained from Lyft.",
+          "required": true
+        }, {
+          "name": "refreshToken",
+          "type": "String",
+          "info": "Refresh token received previously",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    }, {
+      "name": "getRideTypes",
+      "description": "Returns information about what kinds of Lyft rides you can request at a given location.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access Token received from Lyft",
+          "required": true
+        }, {
+          "name": "userLatitude",
+          "type": "String",
+          "info": "The user’s current latitude",
+          "required": true
+        }, {
+          "name": "userLongitude",
+          "type": "String",
+          "info": "The user’s current longitude",
+          "required": true
+        }, {
+          "name": "rideTypes",
+          "type": "Array",
+          "info": "Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    }, {
+      "name": "getNearbyAvailableDrivers",
+      "description": "Returns the location of drivers near a location.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access Token received from Lyft",
+          "required": true
+        }, {
+          "name": "userLatitude",
+          "type": "String",
+          "info": "The user’s current latitude",
+          "required": true
+        }, {
+          "name": "userLongitude",
+          "type": "String",
+          "info": "The user’s current longitude",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    }, {
+      "name": "estimateRideCost",
+      "description": "Returns the estimated cost, distance, and duration of a ride between a start location and end location.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access Token received from Lyft",
+          "required": true
+        }, {
+          "name": "userStartingLatitude",
+          "type": "String",
+          "info": "The user’s starting latitude",
+          "required": true
+        }, {
+          "name": "userStartingLongitude",
+          "type": "String",
+          "info": "The user’s starting longitude",
+          "required": true
+        },{
+          "name": "userEndingLatitude",
+          "type": "String",
+          "info": "The user’s ending latitude",
+          "required": true
+        }, {
+          "name": "userEndingLongitude",
+          "type": "String",
+          "info": "The user’s ending longitude",
+          "required": true
+        }, {
+          "name": "rideTypes",
+          "type": "Array",
+          "info": "Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    }, {
+      "name": "getMe",
+      "description": "Returns the authenticated user's ID.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access Token received from Lyft",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    }, {
+      "name": "getMyRides",
+      "description": "Returns list of user rides.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access Token received from Lyft",
+          "required": true
+        }, {
+          "name": "startTime",
+          "type": "String",
+          "info": "Restrict to rides starting after this point in time. The earliest supported date is 2015-01-01T00:00:00Z",
+          "required": true
+        }, {
+          "name": "endTime",
+          "type": "String",
+          "info": "Restrict to rides starting before this point in time. The earliest supported date is 2015-01-01T00:00:00Z",
+          "required": false
+        }, {
+          "name": "limit",
+          "type": "Number",
+          "info": "The maximum number of rides to return. The default limit is 10 if not specified. The maximum possible value is 50.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    },{
+      "name": "getMySingleRide",
+      "description": "Returns single ride from the list of user rides.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access Token received from Lyft",
+          "required": true
+        }, {
+          "name": "rideId",
+          "type": "String",
+          "info": "Id of the ride",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    }, {
+      "name": "checkDriverComeTiming",
+      "description": "Returns the estimated time in seconds it will take for the nearest driver to reach the specified location.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access Token received from Lyft",
+          "required": true
+        }, {
+          "name": "userLatitude",
+          "type": "String",
+          "info": "The user’s current latitude",
+          "required": true
+        }, {
+          "name": "userLongitude",
+          "type": "String",
+          "info": "The user’s current longitude",
+          "required": true
+        }, {
+          "name": "rideTypes",
+          "type": "Array",
+          "info": "Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    },{
+      "name": "requestRide",
+      "description": "Allows your application to request a ride on behalf of the user. The user's payment credentials on file will be charged for the ride.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access Token received from Lyft",
+          "required": true
+        }, {
+          "name": "userLatitude",
+          "type": "String",
+          "info": "The user’s current latitude",
+          "required": true
+        }, {
+          "name": "userLongitude",
+          "type": "String",
+          "info": "The user’s current longitude",
+          "required": true
+        },{
+          "name": "destinationLatitude",
+          "type": "String",
+          "info": "Destination latitude",
+          "required": false
+        }, {
+          "name": "destinationLongitude",
+          "type": "String",
+          "info": "Destination longitude",
+          "required": false
+        }, {
+          "name": "rideTypes",
+          "type": "Array",
+          "info": "Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'",
+          "required": false
+        }, {
+          "name": "primetimeConfirmationToken",
+          "type": "String",
+          "info": "Prime Time confirmation token",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    }, {
+      "name": "cancelRequestedRide",
+      "description": "Allows your application to cancel the specified ride.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access Token received from Lyft",
+          "required": true
+        },  {
+          "name": "rideId",
+          "type": "String",
+          "info": "Id of the ride",
+          "required": true
+        }, {
+          "name": "cancelConfirmationToken",
+          "type": "String",
+          "info": "Cancel confirmation token",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    }, {
+      "name": "updateRideDestination",
+      "description": "Updates destination of the ride. Note that the ride state must still be active (not droppedOff or canceled), and that destinations on Lyft Line rides cannot be changed.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access Token received from Lyft",
+          "required": true
+        }, {
+          "name": "newDestinationLatitude",
+          "type": "String",
+          "info": "New destination latitude",
+          "required": true
+        }, {
+          "name": "newDestinationLongitude",
+          "type": "String",
+          "info": "New longitude",
+          "required": true
+        }, {
+          "name": "rideId",
+          "type": "String",
+          "info": "Id of the ride",
+          "required": true
+        }, {
+          "name": "newDestinationAddress",
+          "type": "String",
+          "info": "Display address at/near the given location",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "error"
+        }
+      ]
+    }
+  ]
+}
