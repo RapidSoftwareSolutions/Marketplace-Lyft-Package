@@ -4,7 +4,7 @@ $app->post('/api/Lyft/getNearbyAvailableDrivers', function ($request, $response,
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['apiKey', 'userLatitude', 'userLongitude']);
+    $validateRes = $checkRequest->validate($request, ['accessToken', 'userLatitude', 'userLongitude']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
@@ -25,7 +25,7 @@ $app->post('/api/Lyft/getNearbyAvailableDrivers', function ($request, $response,
     try {
 
         $resp = $client->request('GET', $query_str, [
-            'headers' => ['Authorization' => 'Bearer ' . $post_data['args']['apiKey']],
+            'headers' => ['Authorization' => 'Bearer ' . $post_data['args']['accessToken']],
             'query' => $body
         ]);
 
