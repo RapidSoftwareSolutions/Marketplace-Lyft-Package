@@ -4,7 +4,7 @@ $app->post('/api/Lyft/estimateRideCost', function ($request, $response, $args) {
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['apiKey', 'userStartingLatitude', 'userStartingLongitude', 'userEndingLongitude']);
+    $validateRes = $checkRequest->validate($request, ['accessToken', 'userStartingLatitude', 'userStartingLongitude', 'userEndingLongitude']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
@@ -30,7 +30,7 @@ $app->post('/api/Lyft/estimateRideCost', function ($request, $response, $args) {
     try {
 
         $resp = $client->request('GET', $query_str, [
-            'headers' => ['Authorization' => 'Bearer ' . $post_data['args']['apiKey']],
+            'headers' => ['Authorization' => 'Bearer ' . $post_data['args']['accessToken']],
             'query' => $body
         ]);
 
