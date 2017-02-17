@@ -24,7 +24,7 @@ $app->post('/api/Lyft/requestRide', function ($request, $response, $args) {
         $body['destination']['lng'] = $post_data['args']['destinationLongitude'];
     };
 
-    if (isset($post_data['args']['rideTypes']) && count($post_data['args']['rideTypes'])>0) {
+    if (isset($post_data['args']['rideTypes']) && strlen($post_data['args']['rideTypes'])>0) {
         $body['ride_type'] = $post_data['args']['rideTypes'];
     };
 

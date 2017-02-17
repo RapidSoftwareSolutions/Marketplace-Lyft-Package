@@ -266,7 +266,7 @@
           "required": true
         }, {
           "name": "rideTypes",
-          "type": "Array",
+          "type": "String",
           "info": "Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'",
           "required": false
         }
@@ -308,7 +308,7 @@
           "required": false
         }, {
           "name": "rideTypes",
-          "type": "Array",
+          "type": "String",
           "info": "Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'",
           "required": false
         }, {

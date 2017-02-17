@@ -94,7 +94,7 @@ Returns the estimated time in seconds it will take for the nearest driver to rea
 | accessToken  | String| Access Token received from Lyft
 | userLatitude | String| The user’s current latitude
 | userLongitude| String| The user’s current longitude
-| rideTypes    | Array | Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
+| rideTypes    | String| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
 
 ## Lyft.requestRide
 Allows your application to request a ride on behalf of the user. The user's payment credentials on file will be charged for the ride.
@@ -106,7 +106,7 @@ Allows your application to request a ride on behalf of the user. The user's paym
 | userLongitude             | String| The user’s current longitude
 | destinationLatitude       | String| Destination latitude
 | destinationLongitude      | String| Destination longitude
-| rideTypes                 | Array | Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
+| rideTypes                 | String| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
 | primetimeConfirmationToken| String| Prime Time confirmation token
 
 ## Lyft.cancelRequestedRide
