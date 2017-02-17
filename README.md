@@ -38,7 +38,7 @@ Returns information about what kinds of Lyft rides you can request at a given lo
 | accessToken  | String| Access Token received from Lyft
 | userLatitude | String| The user’s current latitude
 | userLongitude| String| The user’s current longitude
-| rideTypes    | Array | Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
+| rideTypes    | String| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
 
 ## Lyft.getNearbyAvailableDrivers
 Returns the location of drivers near a location.
