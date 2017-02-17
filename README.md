@@ -59,7 +59,7 @@ Returns the estimated cost, distance, and duration of a ride between a start loc
 | userStartingLongitude| String| The user’s starting longitude
 | userEndingLatitude   | String| The user’s ending latitude
 | userEndingLongitude  | String| The user’s ending longitude
-| rideTypes            | Array | Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
+| rideTypes            | String| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
 
 ## Lyft.getMe
 Returns the authenticated user's ID.

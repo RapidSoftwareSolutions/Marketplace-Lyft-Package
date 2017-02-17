@@ -19,7 +19,7 @@ $app->post('/api/Lyft/estimateRideCost', function ($request, $response, $args) {
     $body['end_lat'] = $post_data['args']['userEndingLatitude'];
     $body['end_lng'] = $post_data['args']['userEndingLongitude'];
 
-    if (isset($post_data['args']['rideTypes']) && count($post_data['args']['rideTypes'])>0) {
+    if (isset($post_data['args']['rideTypes']) && strlen($post_data['args']['rideTypes'])>0) {
         $body['ride_type'] = $post_data['args']['rideTypes'];
     };
 
