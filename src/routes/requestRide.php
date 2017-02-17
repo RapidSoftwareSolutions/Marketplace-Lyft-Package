@@ -11,7 +11,7 @@ $app->post('/api/Lyft/requestRide', function ($request, $response, $args) {
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $query_str = $settings['api_url'] ."sandbox/rides";
+    $query_str = $settings['api_url'] ."rides";
 
 
     $body['origin']['lat'] = $post_data['args']['userLatitude'];
