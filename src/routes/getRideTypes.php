@@ -16,7 +16,7 @@ $app->post('/api/Lyft/getRideTypes', function ($request, $response, $args) {
 
     $body['lat'] = $post_data['args']['userLatitude'];
     $body['lng'] = $post_data['args']['userLongitude'];
-    if (isset($post_data['args']['rideTypes']) && count($post_data['args']['rideTypes'])>0) {
+    if (isset($post_data['args']['rideTypes']) && strlen($post_data['args']['rideTypes'])>0) {
         $body['ride_type'] = $post_data['args']['rideTypes'];
     };
 
