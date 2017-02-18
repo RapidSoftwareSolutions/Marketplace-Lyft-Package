@@ -1,7 +1,7 @@
 {
   "package": "Lyft",
-  "tagline": "Shippo API",
-  "description": "Shipping",
+  "tagline": "Lyft API",
+  "description": "Lyft",
   "image": "http:\/\/logo.clearbit.com\/lyft.com",
   "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-Lyft-Package",
   "keywords": [
