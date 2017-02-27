@@ -16,7 +16,7 @@
   "blocks": [
     {
       "name": "getAccessToken",
-      "description": "Creates a new address object",
+      "description": "Get accessToken",
       "args": [
         {
           "name": "clientId",
@@ -48,7 +48,7 @@
       ]
     }, {
       "name": "refreshAccessToken",
-      "description": "Creates a new address object",
+      "description": "Refresh existing accessToken",
       "args": [
         {
           "name": "clientId",
