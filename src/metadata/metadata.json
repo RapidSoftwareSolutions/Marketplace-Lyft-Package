@@ -40,12 +40,13 @@
           "required": true
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     }, {
       "name": "refreshAccessToken",
       "description": "Creates a new address object",
@@ -67,12 +68,13 @@
           "required": true
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     }, {
       "name": "getRideTypes",
       "description": "Returns information about what kinds of Lyft rides you can request at a given location.",
@@ -99,12 +101,13 @@
           "required": false
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     }, {
       "name": "getNearbyAvailableDrivers",
       "description": "Returns the location of drivers near a location.",
@@ -126,12 +129,13 @@
           "required": true
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     }, {
       "name": "estimateRideCost",
       "description": "Returns the estimated cost, distance, and duration of a ride between a start location and end location.",
@@ -168,12 +172,13 @@
           "required": false
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     }, {
       "name": "getMe",
       "description": "Returns the authenticated user's ID.",
@@ -185,12 +190,13 @@
           "required": true
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     }, {
       "name": "getMyRides",
       "description": "Returns list of user rides.",
@@ -217,12 +223,13 @@
           "required": false
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     },{
       "name": "getMySingleRide",
       "description": "Returns single ride from the list of user rides.",
@@ -239,12 +246,13 @@
           "required": true
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     }, {
       "name": "checkDriverComeTiming",
       "description": "Returns the estimated time in seconds it will take for the nearest driver to reach the specified location.",
@@ -271,12 +279,13 @@
           "required": false
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     },{
       "name": "requestRide",
       "description": "Allows your application to request a ride on behalf of the user. The user's payment credentials on file will be charged for the ride.",
@@ -318,12 +327,13 @@
           "required": false
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     }, {
       "name": "cancelRequestedRide",
       "description": "Allows your application to cancel the specified ride.",
@@ -345,12 +355,13 @@
           "required": false
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     }, {
       "name": "updateRideDestination",
       "description": "Updates destination of the ride. Note that the ride state must still be active (not droppedOff or canceled), and that destinations on Lyft Line rides cannot be changed.",
@@ -382,12 +393,13 @@
           "required": false
         }
       ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "error"
-        }
-      ]
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
     }
   ]
 }
