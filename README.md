@@ -12,7 +12,7 @@ Shipping
 
 
 ## Lyft.getAccessToken
-Creates a new address object
+Get accessToken
 
 | Field       | Type       | Description
 |-------------|------------|----------
@@ -22,7 +22,7 @@ Creates a new address object
 | code        | String     | Code from the user.
 
 ## Lyft.refreshAccessToken
-Creates a new address object
+Refresh existing accessToken
 
 | Field       | Type       | Description
 |-------------|------------|----------
