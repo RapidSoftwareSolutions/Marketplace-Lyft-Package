@@ -4,31 +4,38 @@ $app->post('/api/Lyft/requestRide', function ($request, $response, $args) {
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['accessToken', 'userLatitude', 'userLongitude']);
+    $validateRes = $checkRequest->validate($request, ['accessToken']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $query_str = $settings['api_url'] ."rides";
+    $query_str = $settings['api_url'] . "rides";
 
+    if (isset($post_data['args']['startCoordinate'])) {
+        $body['origin']['lat'] = explode(',', $post_data['args']['startCoordinate'])[0];
+        $body['origin']['lng'] = explode(',', $post_data['args']['startCoordinate'])[1];
 
-    $body['origin']['lat'] = $post_data['args']['userLatitude'];
-    $body['origin']['lng'] = $post_data['args']['userLongitude'];
+    } else {
+        $body['origin']['lat'] = $post_data['args']['userLatitude'];
+        $body['origin']['lng'] = $post_data['args']['userLongitude'];
+    }
 
-    if (isset($post_data['args']['destinationLatitude']) && strlen($post_data['args']['destinationLatitude'])>0) {
+    if (isset($post_data['args']['destinationCoordinate'])) {
+        $body['destination']['lat'] = explode(',', $post_data['args']['destinationCoordinate'])[0];
+        $body['destination']['lng'] = explode(',', $post_data['args']['destinationCoordinate'])[1];
+
+    } else {
         $body['destination']['lat'] = $post_data['args']['destinationLatitude'];
-    };
-    if (isset($post_data['args']['destinationLongitude']) && strlen($post_data['args']['destinationLongitude'])>0) {
         $body['destination']['lng'] = $post_data['args']['destinationLongitude'];
-    };
+    }
 
-    if (isset($post_data['args']['rideTypes']) && strlen($post_data['args']['rideTypes'])>0) {
+    if (isset($post_data['args']['rideTypes']) && strlen($post_data['args']['rideTypes']) > 0) {
         $body['ride_type'] = $post_data['args']['rideTypes'];
     };
 
-    if (isset($post_data['args']['primetimeConfirmationToken']) && strlen($post_data['args']['primetimeConfirmationToken'])>0) {
+    if (isset($post_data['args']['primetimeConfirmationToken']) && strlen($post_data['args']['primetimeConfirmationToken']) > 0) {
         $body['primetime_confirmation_token'] = $post_data['args']['primetimeConfirmationToken'];
     };
 

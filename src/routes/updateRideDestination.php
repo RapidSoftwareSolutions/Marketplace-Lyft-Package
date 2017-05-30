@@ -4,18 +4,26 @@ $app->post('/api/Lyft/updateRideDestination', function ($request, $response, $ar
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['accessToken', 'rideId', 'newDestinationLatitude', 'newDestinationLongitude']);
+    $validateRes = $checkRequest->validate($request, ['accessToken', 'rideId']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $query_str = $settings['api_url'] ."rides/".$post_data['args']['rideId'].'/destination';
+    $query_str = $settings['api_url'] . "rides/" . $post_data['args']['rideId'] . '/destination';
 
-    $body['lat'] = $post_data['args']['newDestinationLatitude'];
-    $body['lng'] = $post_data['args']['newDestinationLongitude'];
-    if (isset($post_data['args']['newDestinationAddress']) && strlen($post_data['args']['newDestinationAddress'])>0) {
+    if (isset($post_data['args']['newCoordinate'])) {
+
+        $body['lat'] = explode(',', $post_data['args']['newCoordinate'])[0];
+        $body['lng'] = explode(',', $post_data['args']['newCoordinate'])[1];
+
+    } else {
+        $body['lat'] = $post_data['args']['newDestinationLatitude'];
+        $body['lng'] = $post_data['args']['newDestinationLongitude'];
+    }
+
+    if (isset($post_data['args']['newDestinationAddress']) && strlen($post_data['args']['newDestinationAddress']) > 0) {
         $body['address'] = $post_data['args']['newDestinationAddress'];
     };
 
@@ -26,7 +34,7 @@ $app->post('/api/Lyft/updateRideDestination', function ($request, $response, $ar
 
         $resp = $client->request('PUT', $query_str, [
             'headers' => ['Authorization' => 'Bearer ' . $post_data['args']['accessToken']],
-            'json'=>$body
+            'json' => $body
         ]);
 
         $responseBody = $resp->getBody()->getContents();

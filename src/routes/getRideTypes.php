@@ -4,7 +4,7 @@ $app->post('/api/Lyft/getRideTypes', function ($request, $response, $args) {
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['accessToken', 'userLatitude', 'userLongitude']);
+    $validateRes = $checkRequest->validate($request, ['accessToken']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
@@ -13,9 +13,13 @@ $app->post('/api/Lyft/getRideTypes', function ($request, $response, $args) {
     //forming request to vendor API
     $query_str = $settings['api_url'] ."ridetypes";
 
-
-    $body['lat'] = $post_data['args']['userLatitude'];
-    $body['lng'] = $post_data['args']['userLongitude'];
+    if(isset($post_data['args']['coordinate'])){
+        $body['lat'] = explode(',', $post_data['args']['coordinate'])[0];
+        $body['lng'] = explode(',', $post_data['args']['coordinate'])[1];
+    } else {
+        $body['lat'] = $post_data['args']['userLatitude'];
+        $body['lng'] = $post_data['args']['userLongitude'];
+    }
     if (isset($post_data['args']['rideTypes']) && strlen($post_data['args']['rideTypes'])>0) {
         $body['ride_type'] = $post_data['args']['rideTypes'];
     };

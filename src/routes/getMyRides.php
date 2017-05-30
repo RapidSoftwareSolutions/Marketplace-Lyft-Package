@@ -11,17 +11,18 @@ $app->post('/api/Lyft/getMyRides', function ($request, $response, $args) {
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $query_str = $settings['api_url'] ."rides";
+    $query_str = $settings['api_url'] . "rides";
 
-    $body['start_time'] = $post_data['args']['startTime'];
+    $startTime = new DateTime($post_data['args']['startTime']);
+    $body['start_time'] = $startTime->format(DateTime::ISO8601);
 
-    if(isset($post_data['args']['endTime']) && strlen($post_data['args']['endTime'])>0){
-        $body['end_time'] = $post_data['args']['endTime'];
+    if (isset($post_data['args']['endTime']) && strlen($post_data['args']['endTime']) > 0) {
+        $endTime = new DateTime($post_data['args']['endTime']);
+        $body['start_time'] = $endTime->format(DateTime::ISO8601);
     };
-    if(isset($post_data['args']['limit']) && strlen($post_data['args']['limit'])>0){
+    if (isset($post_data['args']['limit']) && strlen($post_data['args']['limit']) > 0) {
         $body['limit'] = $post_data['args']['limit'];
     };
-
 
 
     //requesting remote API
@@ -31,7 +32,7 @@ $app->post('/api/Lyft/getMyRides', function ($request, $response, $args) {
 
         $resp = $client->request('GET', $query_str, [
             'headers' => ['Authorization' => 'Bearer ' . $post_data['args']['accessToken']],
-            'query'=>$body
+            'query' => $body
         ]);
 
         $responseBody = $resp->getBody()->getContents();

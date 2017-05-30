@@ -4,22 +4,31 @@ $app->post('/api/Lyft/estimateRideCost', function ($request, $response, $args) {
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['accessToken', 'userStartingLatitude', 'userStartingLongitude', 'userEndingLongitude']);
+    $validateRes = $checkRequest->validate($request, ['accessToken']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $query_str = $settings['api_url'] ."cost";
+    $query_str = $settings['api_url'] . "cost";
 
+    if (isset($post_data['args']['startCoordinate'])) {
+        $body['start_lat'] = explode(',', $post_data['args']['startCoordinate'])[0];
+        $body['start_lng'] = explode(',', $post_data['args']['startCoordinate'])[1];
+    } else {
+        $body['start_lat'] = $post_data['args']['userStartingLatitude'];
+        $body['start_lng'] = $post_data['args']['userStartingLongitude'];
+    }
+    if (isset($post_data['args']['endCoordinate'])) {
+        $body['end_lat'] = explode(',', $post_data['args']['endCoordinate'])[0];
+        $body['end_lng'] = explode(',', $post_data['args']['endCoordinate'])[1];
+    } else {
+        $body['end_lat'] = $post_data['args']['userEndingLatitude'];
+        $body['end_lng'] = $post_data['args']['userEndingLongitude'];
+    }
 
-    $body['start_lat'] = $post_data['args']['userStartingLatitude'];
-    $body['start_lng'] = $post_data['args']['userStartingLongitude'];
-    $body['end_lat'] = $post_data['args']['userEndingLatitude'];
-    $body['end_lng'] = $post_data['args']['userEndingLongitude'];
-
-    if (isset($post_data['args']['rideTypes']) && strlen($post_data['args']['rideTypes'])>0) {
+    if (isset($post_data['args']['rideTypes']) && strlen($post_data['args']['rideTypes']) > 0) {
         $body['ride_type'] = $post_data['args']['rideTypes'];
     };
 
