@@ -1,7 +1,7 @@
 [![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/Lyft/functions?utm_source=RapidAPIGitHub_LyftFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
 
 # Lyft Package
-Lyft
+Lyft's API enables developers to programmatically interact with Lyft's rider and driver network, enabling them to transport their customers with a smile.
 * Domain: [Lyft](http://lyft.com)
 * Credentials: clientId, clientSecret
 
@@ -48,7 +48,7 @@ Returns information about what kinds of Lyft rides you can request at a given lo
 |------------|-------|----------
 | accessToken| String| Access Token received from Lyft
 | coordinate | Map   | The user’s current latitude and longitude coma separated
-| rideTypes  | Select| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
+| rideTypes  | Select| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_premier', 'lyft_lux', 'lyft_luxsuv' 
 
 ## Lyft.getNearbyAvailableDrivers
 Returns the location of drivers near a location.
@@ -66,7 +66,7 @@ Returns the estimated cost, distance, and duration of a ride between a start loc
 | accessToken    | String| Access Token received from Lyft
 | startCoordinate| Map   | The user’s starting latitude and logintude coma separated
 | endCoordinate  | Map   | The user’s ending latitude and logintude coma separated
-| rideTypes      | Select| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
+| rideTypes      | Select| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_premier', 'lyft_lux', 'lyft_luxsuv' 
 
 ## Lyft.getMe
 Returns the authenticated user's ID.
@@ -100,7 +100,7 @@ Returns the estimated time in seconds it will take for the nearest driver to rea
 |------------|-------|----------
 | accessToken| String| Access Token received from Lyft
 | coordinate | Map   | The user’s current latitude nad longitude coma separated
-| rideTypes  | Select| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
+| rideTypes  | Select| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_premier', 'lyft_lux', 'lyft_luxsuv' 
 
 ## Lyft.requestRide
 Allows your application to request a ride on behalf of the user. The user's payment credentials on file will be charged for the ride.
@@ -110,7 +110,7 @@ Allows your application to request a ride on behalf of the user. The user's paym
 | accessToken               | String| Access Token received from Lyft
 | startCoordinate           | Map   | The user’s current latitude and longitude coma separated
 | destinationCoordinate     | Map   | Destination latitude and longitude coma separated
-| rideTypes                 | Select| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'
+| rideTypes                 | Select| Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_premier', 'lyft_lux', 'lyft_luxsuv' 
 | primetimeConfirmationToken| String| Prime Time confirmation token
 
 ## Lyft.cancelRequestedRide

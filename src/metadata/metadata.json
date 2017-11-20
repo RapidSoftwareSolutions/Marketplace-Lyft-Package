@@ -1,7 +1,7 @@
 {
   "package": "Lyft",
   "tagline": "Lyft API",
-  "description": "Lyft",
+  "description": "Lyft's API enables developers to programmatically interact with Lyft's rider and driver network, enabling them to transport their customers with a smile.",
   "image": "http:\/\/logo.clearbit.com\/lyft.com",
   "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-Lyft-Package",
   "keywords": [
@@ -111,9 +111,11 @@
             "lyft",
             "lyft_line",
             "lyft_plus",
-            "lyft_suv"
+            "lyft_premier",
+            "lyft_lux",
+            "lyft_luxsuv"
           ],
-          "info": "Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'",
+          "info": "Requested types of ride.",
           "required": false
         }
       ],
@@ -185,9 +187,11 @@
             "lyft",
             "lyft_line",
             "lyft_plus",
-            "lyft_suv"
+            "lyft_premier",
+            "lyft_lux",
+            "lyft_luxsuv"
           ],
-          "info": "Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'",
+          "info": "Requested types of ride.",
           "required": false
         }
       ],
@@ -315,9 +319,11 @@
             "lyft",
             "lyft_line",
             "lyft_plus",
-            "lyft_suv"
+            "lyft_premier",
+            "lyft_lux",
+            "lyft_luxsuv"
           ],
-          "info": "Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'",
+          "info": "Requested types of ride.",
           "required": false
         }
       ],
@@ -352,7 +358,7 @@
           "name": "destinationCoordinate",
           "type": "Map",
           "info": "Destination latitude and longitude coma separated",
-          "required": false
+          "required": true
         },
         {
           "name": "rideTypes",
@@ -361,10 +367,12 @@
             "lyft",
             "lyft_line",
             "lyft_plus",
-            "lyft_suv"
+            "lyft_premier",
+            "lyft_lux",
+            "lyft_luxsuv"
           ],
-          "info": "Requested types of ride. Possible values: 'lyft', 'lyft_line', 'lyft_plus', 'lyft_suv'",
-          "required": false
+          "info": "Requested types of ride.",
+          "required": true
         },
         {
           "name": "primetimeConfirmationToken",
