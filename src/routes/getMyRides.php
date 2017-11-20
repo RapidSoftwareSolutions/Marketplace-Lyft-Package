@@ -14,11 +14,11 @@ $app->post('/api/Lyft/getMyRides', function ($request, $response, $args) {
     $query_str = $settings['api_url'] . "rides";
 
     $startTime = new DateTime($post_data['args']['startTime']);
-    $body['start_time'] = $startTime->format('Y-m-d\TH:i:s\Z');
+    $body['start_time'] = $startTime->format(DateTime::ISO8601);
 
     if (isset($post_data['args']['endTime']) && strlen($post_data['args']['endTime']) > 0) {
         $endTime = new DateTime($post_data['args']['endTime']);
-        $body['start_time'] = $endTime->format('Y-m-d\TH:i:s\Z');
+        $body['end_time'] = $endTime->format(DateTime::ISO8601);
     };
     if (isset($post_data['args']['limit']) && strlen($post_data['args']['limit']) > 0) {
         $body['limit'] = $post_data['args']['limit'];
